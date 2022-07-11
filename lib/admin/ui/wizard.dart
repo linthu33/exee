@@ -311,8 +311,8 @@ class _WizardFormState extends State<WizardForm> {
                       context
                           .read<ProductsBloc>()
                           .add(ProductAdd(product: prod));
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => const AdminHome()));
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => AdminHome()));
                     }
                   },
                   onFailure: (context, state) {

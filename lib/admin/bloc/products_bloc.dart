@@ -22,15 +22,15 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   }
 
   void _onAddProduct(ProductAdd event, Emitter<ProductsState> emit) async {
-    print('-------------------');
+    // print('-------------------');
     //print(event.product.toJson());
-    print('-------------------');
+    //print('-------------------');
     final state = this.state;
     final addproduct = await productRepository.AddProducts(event.product);
     // ignore: unrelated_type_equality_checks
     if (addproduct == 200) {
       if (state is ProductsLoadedState) {
-        print(state.products);
+        // print(state.products);
         emit(ProductsLoadedState(
             products: List.from(state.products)..add(event.product)));
       }
@@ -43,9 +43,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       ProductUpdate event, Emitter<ProductsState> emit) async {
     //print();
     //print(ProductsModel.toJson());
-    print('-------------------');
+    //print('-------------------');
     //print(event.product.toJson());
-    print('-------------------');
+    //print('-------------------');
     final state = this.state;
     final editproduct = await productRepository.UpdateProducts(event.product);
     if (editproduct == 200) {

@@ -62,7 +62,7 @@ class _EditTestTwoState extends State<EditTestTwo> {
     //print(editdes!.first.details);
   }
 
-  void EditProduct() async{
+  void EditProduct() async {
     var pdata = ProductsModel(
         Id: widget.prodedit.Id,
         title: contitle.text,
@@ -77,8 +77,7 @@ class _EditTestTwoState extends State<EditTestTwo> {
         //shipping: ,
         description: editdes ?? widget.prodedit.description,
         pricetype: editprice ?? widget.prodedit.pricetype);
- BlocProvider.of<ProductsBloc>(context)
-                            .add(ProductUpdate(product: pdata));
+    BlocProvider.of<ProductsBloc>(context).add(ProductUpdate(product: pdata));
     //widget.mykey.currentState.
     //print(pdata.toJson(pdata));
   }
@@ -275,9 +274,9 @@ class _EditTestTwoState extends State<EditTestTwo> {
             ),
             ElevatedButton(
                 onPressed: _isDesButton
-                    ?  () {
-                         EditProduct();
-                      /*   var pdata = ProductsModel(
+                    ? () {
+                        EditProduct();
+                        /*   var pdata = ProductsModel(
                             Id: widget.prodedit.Id,
                             title: contitle.text,
                             color: concolor.text,
