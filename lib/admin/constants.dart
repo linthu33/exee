@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const basicapi = "http://localhost:5000/";
+
 class Constants {
   static const double kPadding = 10.0;
   static const Color purpleLight = Color(0XFF1e224c);

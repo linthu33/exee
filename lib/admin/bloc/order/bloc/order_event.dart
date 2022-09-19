@@ -10,14 +10,18 @@ class Orderloaded extends OrderEvent {
   List<Object?> get props => [];
 }
 
-class OrderEdit extends OrderEvent {
-  const OrderEdit();
+class OrderEditevent extends OrderEvent {
+  const OrderEditevent();
   List<Object?> get props => [];
 }
 
 // ignore: must_be_immutable
-class OrderStatusUpdate extends OrderEvent {
-  late String orderstatus;
+class OrderStatusUpdateEvent extends OrderEvent {
+  //final String orderstatus;
+  final String Id;
+  final List<Order_DStatus> orderstatus;
 
-  String get props => orderstatus;
+  const OrderStatusUpdateEvent({required this.orderstatus, required this.Id});
+
+  String get props => Id;
 }

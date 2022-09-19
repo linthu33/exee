@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mystore/admin/models/ProductsModel.dart';
 
+import '../constants.dart';
+
 abstract class ProductServiceApi {
   Future<List<ProductsModel>> getProduct();
   Future<int> createProduct(ProductsModel product);
@@ -13,7 +15,7 @@ class ProductService extends ProductServiceApi {
   @override
   Future<List<ProductsModel>> getProduct() async {
     try {
-      var uri = Uri.parse("http://localhost:3000/findAllprod");
+      var uri = Uri.parse(basicapi + "findAllprod");
       var response =
           await http.get(uri, headers: {"ContentType": "application/json"});
 
@@ -33,7 +35,7 @@ class ProductService extends ProductServiceApi {
   @override
   Future<int> createProduct(ProductsModel product) async {
     try {
-      var uri = Uri.parse("http://localhost:3000/createprod");
+      var uri = Uri.parse(basicapi + "createprod");
       //Map data = {'title': product.title, 'color': product.color};
       final response = await http.post(
         uri,
@@ -56,7 +58,7 @@ class ProductService extends ProductServiceApi {
       print("updaye ");
       final pp = product.toJson(product);
       final dd = jsonEncode(pp);
-      var uri = Uri.parse("http://localhost:4000/editprod");
+      var uri = Uri.parse(basicapi + "editprod");
       Map<String, String> headers = {
         "Content-type": "application/json",
         "Accept": "application/json",
@@ -78,7 +80,7 @@ class ProductService extends ProductServiceApi {
       print(productid);
       //final pp = product.toJson(product);
       //final dd = jsonEncode(pp);
-      var uri = Uri.parse("http://localhost:4000/deleteprod/$productid");
+      var uri = Uri.parse(basicapi + "/deleteprod/$productid");
       Map<String, String> headers = {
         "Content-type": "application/json",
         "Accept": "application/json",

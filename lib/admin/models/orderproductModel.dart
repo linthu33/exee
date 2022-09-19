@@ -1,4 +1,5 @@
 class Orderproduct {
+  String? Id;
   String? barcode;
   String? orderdate;
   String? orderstatus;
@@ -17,7 +18,8 @@ class Orderproduct {
   List<Orderitem>? orderitem;
 
   Orderproduct(
-      {this.barcode,
+      {this.Id,
+      this.barcode,
       this.orderdate,
       this.orderstatus,
       this.totalquantity,
@@ -35,6 +37,7 @@ class Orderproduct {
       this.orderitem});
 
   Orderproduct.fromJson(Map<String, dynamic> json) {
+    Id = json['_id'];
     barcode = json['barcode'];
     orderdate = json['orderdate'];
     orderstatus = json['orderstatus'];
@@ -64,6 +67,7 @@ class Orderproduct {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['Id'] = this.Id;
     data['barcode'] = this.barcode;
     data['orderdate'] = this.orderdate;
     data['orderstatus'] = this.orderstatus;
@@ -158,6 +162,7 @@ class Shippingaddress {
 }
 
 class Orderitem {
+  String? oid;
   String? productid;
   String? producttype;
   int? sellprice;
@@ -170,7 +175,8 @@ class Orderitem {
   String? expiredate;
 
   Orderitem(
-      {this.productid,
+      {this.oid,
+      this.productid,
       this.producttype,
       this.sellprice,
       this.buyprice,
@@ -182,6 +188,7 @@ class Orderitem {
       this.expiredate});
 
   Orderitem.fromJson(Map<String, dynamic> json) {
+    oid = json['_id'];
     productid = json['productid'];
     producttype = json['producttype'];
     sellprice = json['sellprice'];
@@ -196,6 +203,7 @@ class Orderitem {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['_id'] = this.oid;
     data['productid'] = this.productid;
     data['producttype'] = this.producttype;
     data['sellprice'] = this.sellprice;

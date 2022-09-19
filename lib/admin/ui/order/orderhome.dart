@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mystore/admin/bloc/order/bloc/order_bloc.dart';
 import 'package:mystore/admin/models/orderproductModel.dart';
-import 'package:mystore/admin/ui/order/orderdetails.dart';
 
 import '../../constants.dart';
+import 'ordervocher.dart';
 
 class OrderHome extends StatelessWidget {
   const OrderHome({Key? key}) : super(key: key);
@@ -88,31 +88,45 @@ Container _ProductList(Orderproduct product, BuildContext ctx) {
   final ord = product.orderitem!.map(((e) => e.totalamount));
   var sumdata = ord.reduce((a, b) => a! + b!);
   return Container(
-    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Text(
-        product.barcode.toString(),
-        style: TextStyle(color: Colors.white),
-      ),
-      Text(
-        product.barcode.toString(),
-        style: TextStyle(color: Colors.white),
-      ),
-      Text(
-        sumdata.toString(),
-        style: TextStyle(color: Colors.white),
-      ),
-      ElevatedButton(
-        onPressed: () {
-          Navigator.pushReplacement(
-            ctx,
-            MaterialPageRoute(
-                builder: (context) => OrderDetails(
-                      odlist: product,
-                    )),
-          );
-        },
-        child: Text('enter'),
-      )
-    ]),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Text(
+          product.barcode.toString(),
+          style: TextStyle(color: Colors.white),
+        ),
+        Text(
+          product.orderstatus.toString(),
+          style: TextStyle(color: Colors.cyan),
+        ),
+        Text(
+          sumdata.toString(),
+          style: TextStyle(color: Colors.white),
+        ),
+        ElevatedButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                ctx,
+                MaterialPageRoute(
+                    builder: (context) => VoucherScreen(
+                          invoice: product,
+                        )),
+              );
+            },
+            child: Wrap(
+              children: const [
+                Icon(
+                  Icons.shop,
+                  color: Colors.deepOrange,
+                  size: 24.0,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text("details!", style: TextStyle(fontSize: 16)),
+              ],
+            ))
+      ]),
+    ),
   );
 }

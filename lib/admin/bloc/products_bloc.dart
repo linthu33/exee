@@ -63,8 +63,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
   void _onDeleteProduct(
       ProductDelete event, Emitter<ProductsState> emit) async {
-    print(this.state);
-    print(event.productid);
     final deleteproduct =
         await productRepository.DeleteProducts(event.productid);
     final state = this.state;

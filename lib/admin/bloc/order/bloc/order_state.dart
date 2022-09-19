@@ -2,6 +2,7 @@ part of 'order_bloc.dart';
 
 @immutable
 abstract class OrderState extends Equatable {
+  @override
   List<Object?> get props => [];
 }
 
@@ -16,7 +17,7 @@ class OrderLoadedState extends OrderState {
 }
 
 class OrderErrorState extends OrderState {
-  final errors;
+  final String errors;
 
   OrderErrorState(this.errors);
 }
